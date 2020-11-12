@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Embeddable;
 
 /** @Embeddable */
-class address {
+class Address {
     /** @Column(type="string") **/
     private $street;
 
