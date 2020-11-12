@@ -10,15 +10,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
-class DefaultController extends AbstractController
+class RestController extends AbstractController
 {
     /**
      * @Route("/default", name="default")
      */
-    public function index(SerializerInterface $serializer): Response
+    public function index(): Response
     {
         return $this->render('default/index.html.twig', [
-            'controller_name' => 'DefaultController',
+            'controller_name' => 'RestController',
         ]);
     }
 }
