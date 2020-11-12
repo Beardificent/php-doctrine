@@ -1,3 +1,13 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+student_list:
+  path: /api/v1/students
+  controller: App\Controller\StudentController:indexAction
+  methods: [GET]
+
+student_create:
+    path: /api/v1/students
+    controller: App\Controller\StudentController:createAction
+    methods: [POST]
