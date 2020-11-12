@@ -42,8 +42,7 @@ class StudentController extends AbstractApiController
         $this->getDoctrine()->getManager()->persist($student);
         $this->getDoctrine()->getManager()->flush();
 
-
-        return $this->json($student);
-
+        var_dump($student);
+        return $this->respond($student);
     }
 }
