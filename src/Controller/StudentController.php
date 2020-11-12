@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Student;
 use App\Form\Type\StudentType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,10 +19,6 @@ class StudentController extends AbstractApiController
 
         return $this->json($students);
 
-       /* return $this->render('student/index.html.twig', [
-            'controller_name' => 'StudentController',
-        ]);
-       */
     }
 
     public function createAction(Request $request) : Response
@@ -44,5 +39,16 @@ class StudentController extends AbstractApiController
 
         var_dump($student);
         return $this->respond($student);
+    }
+
+    /**
+     * @Route("/showForm", name="showForm")
+     */
+    public function new(Request $request){
+        $student = new Student();
+        $form = $this->createForm(StudentType::class, $student);
+        return $this->render('student/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }
