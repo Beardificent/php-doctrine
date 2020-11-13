@@ -93,7 +93,7 @@ class Teacher
     }
 
     //Added this from block 1 of : https://symfony.com/doc/2.0//cookbook/form/form_collections.html
-    public function setStudents(ArrayCollection $students)
+    public function setStudents(Student $students)
     {
         $this->students = $students;
     }

@@ -33,7 +33,7 @@ class StudentController extends AbstractApiController
 
 
         $jsonContent = $serializer->serialize($students, 'json');
-        return $jsonContent;
+        echo $jsonContent;
 
     }
 

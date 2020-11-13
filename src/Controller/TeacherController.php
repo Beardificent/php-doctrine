@@ -22,12 +22,15 @@ class TeacherController extends AbstractApiController
         ]);
     }
 
+    /**
+     * @Route("/teacherForm", name="teacherForm")
+     */
     public function newAction(Request $request)
     {
         $teacher = new Teacher();
 
         $student1 = new Student ();
-        $student1->name = $_POST['name'];
+        $student1->name = "help";
 
         $form = $this->createForm(new TeacherType(), $teacher);
 
