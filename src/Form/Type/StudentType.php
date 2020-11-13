@@ -61,10 +61,22 @@ class StudentType extends AbstractType
             ;
     }
 
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'src\Entity\Student',
+        );
+    }
     public function configureOptions(OptionsResolver $resolver) : void
     {
+
         $resolver->setDefaults([
             'data_class' => Student::class,
         ]);
+    }
+// added this from block 2 of: https://symfony.com/doc/2.0//cookbook/form/form_collections.html
+    public function getStudent()
+    {
+        return 'student';
     }
 }

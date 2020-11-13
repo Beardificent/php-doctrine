@@ -82,7 +82,7 @@ class Student
         return $this;
     }
 
-    public function getAddress(Address $address): ?string
+    public function getAddress(): ?Address
     {
         return $this->address;
     }

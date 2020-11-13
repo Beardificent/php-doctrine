@@ -10,13 +10,13 @@ class Address {
     /** @Column(type="string") **/
     private $street;
 
-    /** @Column(type="string") **/
+    /** @Column(type="integer") **/
     private $streetNumber;
 
     /** @Column(type="string") **/
     private $city;
 
-    /** @Column(type="string") **/
+    /** @Column(type="integer") **/
     private $zipcode;
 
     public function __construct(string $street, int $streetNumber, string $city, int $zipcode)

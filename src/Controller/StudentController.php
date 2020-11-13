@@ -8,16 +8,32 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+
 class StudentController extends AbstractApiController
 {
+
+
     /**
      * @Route("/student", name="student")
      */
-    public function indexAction(Request $request): Response
+    public function indexAction(SerializerInterface $serializer)
     {
+
+        $encoders = [new XmlEncoder(), new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+
+        $serializer = new Serializer($normalizers, $encoders);
+
         $students = $this->getDoctrine()->getRepository(Student::class)->findAll();
 
-        return $this->json($students);
+
+        $jsonContent = $serializer->serialize($students, 'json');
+        return $jsonContent;
 
     }
 
@@ -27,6 +43,7 @@ class StudentController extends AbstractApiController
 
         $form->handleRequest($request);
 
+        //form handling
         if (!$form->isSubmitted() || !$form->isValid()){
          return $this->respond($form, Response::HTTP_BAD_REQUEST);
         }

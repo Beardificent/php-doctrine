@@ -72,12 +72,12 @@ class Teacher
         return $this;
     }
 
-    public function getAddress(): ?string
+    public function getAddress(): Address
     {
         return $this->Address;
     }
 
-    public function setAddress(string $Address): self
+    public function setAddress($Address): self
     {
         $this->Address = $Address;
 
@@ -90,6 +90,12 @@ class Teacher
     public function getStudents(): Collection
     {
         return $this->students;
+    }
+
+    //Added this from block 1 of : https://symfony.com/doc/2.0//cookbook/form/form_collections.html
+    public function setStudents(ArrayCollection $students)
+    {
+        $this->students = $students;
     }
 
     public function addStudent(Student $student): self
